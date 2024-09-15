@@ -83,20 +83,24 @@
         Decremento          -- [ se resta de uno en uno ]
 
 -> Concatenacion
+
     Con el signo +
     Con backticks o la variable ${} 
 
 -> Backticks o Acento grabe
+
     [alt+96] -> ``
     [ctrl+alt+}] -> ``
 
     Esto sirve para poner variables sin utilizar el +, comillas("", '') o codigo HTML y evitar errores
 
 ->  Esacape (de comillas simples o comilas dobles)
+
     " 'Escape de comillas simples' "
     ' "Escape de comillas dobles"  '
 
 -> Operadores (Intermedio)
+
     Operadores de comparacion
         Igualdad            a ==  b
         Desigualdad         a !=  b
@@ -114,14 +118,17 @@
 
 
 -> Camel Case
+
     Frases o palabras compuestas [nombrePersona, parseInt(), .getElementById(), etc..]
 
 -> Condicionales
+
     If ()
       Else If ()
     Else ()
 
 -> Arrays
+
     frutas = ["banana","uva","pera"]
     document.write(frutas[2])
 
@@ -130,6 +137,7 @@
     document.write(fruta)
 
 -> Arrays asociativos
+
     let pc1 = {
         nombre: "SamuelPC",
         prosesador: "amd",
@@ -141,6 +149,7 @@
 -> Bucles e iteracion
 
     Sentencia while y break
+
         let numero = 0
         while (numero <  20) {
             numero++
@@ -150,10 +159,11 @@
             }
         }
 
-    Sentencia do while
+    Sentencia do while ??????????????????
 
     Sentencia for y continue
-        for (let i = 0; i < 6; i++) {
+    
+        for (let i = 0; i <br 6; i++) {
             if (i == 3) {
                 continue; [ salta el valor indicado en el condicional ; '3' ]
             }
@@ -183,6 +193,7 @@
     Sentencia label
 
 -> Funciones
+
     Crear funciones y llamarlas
 
         function saludar () {
@@ -216,21 +227,21 @@
 
     Scope
 
-    [ Ejemplo 1 ]
-        function suma (num1, num2) {
-            let res = num1 + num2
-            document.write(res)
-            document.write("<br>")
-        }
-        suma(12,32)
-        suma(22,55)
+        [ Ejemplo 1 ]
+            function suma (num1, num2) {
+                let res = num1 + num2
+                document.write(res)
+                document.write("<br>")
+            }
+            suma(12,32)
+            suma(22,55)
 
-    [ Ejemplo 2 ]
-        function saludar (nombre) {
-            frase = `hola ${nombre} , como estas?` 
-        }
-        saludar("sam")
-        document.write(frase)
+        [ Ejemplo 2 ]
+            function saludar (nombre) {
+                frase = `hola ${nombre} , como estas?` 
+            }
+            saludar("sam")
+            document.write(frase)
 
     Funciones flecha
 
@@ -242,9 +253,135 @@
 
 
 -> ForEach
+    
     Sintaxis y usos
     Ventaja respecto a 'for'
     Desventajas (break, continue)
+
+------------- Paradigma de programacion -------------
+
+-> P.O.O.
     
+    Definicion
+        Es un oparadigma de programacion, para desarrollar de una mejor forma
+
+-> Conceptos basicos
+    
+    Clase
+        En programacion es un arcgivo donde se escribe codigo, el cual puede 
+        funcionar como la logica o como el diseño
+
+    Objeto
+        Un objeto es una entidad dentro de un programa que representa una
+        instancia concreta de una clase. Un objeto es algo que se crea a 
+        partir de la clase
+        
+    Atributo
+        Las caracteristicas del objeto
+
+    Metodo
+        Cosas que puede hacer el objeto
+
+    Constructor
+        Funcion obligatoria de la clase, usado para crear los parametros y
+        las propiedades del objeto
+
+    instancias
+        Una instancia es cuando creas algo a partir de un molde o modelo. Si 
+        tienes un molde para hacer galletas, cada galleta que hagas con ese
+        molde sería una instancias
+
+-> Pilares fundamentales de POO
+    
+    Abstraccion
+        Simplificar lo mas que se pueda un objeto, obteniendo un resumen de lo mas importante
+
+    Encapsulamiento
+        Es como poner una protección a los datos de un objeto para que no se puedan modificar directamente
+
+    Polimorfismo
+        Es el comportamiento del objeto ante el mismo metodo dependiendo de sus propiedades
+
+    Herencia [ extends ]
+        es cuando una clase toma las características de otra clase. Si tienes una categoría general 
+        llamada "Animal", puedes crear otra más específica llamada "Perro" que copie todo lo que "Animal" 
+        tiene, pero además puede agregar cosas nuevas
+
+-> Otros conceptos
+    
+    Modularidad
+        Separar en partes una problematica
+
+    Metodos estaticos [static]
+        se refiere a algo que pertenece a la clase en general y no a instancias específicas de esa 
+        clase. En pocas palabras, es algo que puedes usar sin necesidad de crear un objeto
+
+    Metodos accesores [ get : set ]
+        getters
+            Se utilizan para obtener un valor
+       
+        setters
+            Se utilizan para modificar o definirlo
+
+-> Ejemplo
+
+    class Animal {
+        /* Abstraccion */
+        constructor(especie, edad, color) { /* parametros */
+            /* propiedades */
+            this.raza = especie;
+            this.anios = edad;
+            this.pelaje = color;
+            this.info = `Soy un ${this.raza}, tengo ${this.anios} años y soy de color ${this.pelaje}`;
+        }
+        /* metodo */
+        verinfo() {
+            document.write(this.info);
+        }
+        /* mejamos polimorfismo */
+        ladrar() {
+            if (this.raza == "perro") {
+                document.write("wow!");
+            }  else {
+                document.write("Esto no es un perro, es un "+ this.raza);
+            }   
+        }
+    }
+    /* instanciamos la clase como objeto */
+    const perro = new Animal("perro",5,"rojo");
+    /* sin parametros asignaddos */
+    document.write(perro); '[object Object]'
+    /* con parametros asignaddos */
+    document.write(perro.pelaje); 'rojo'
+    document.write(perro.info); 'Soy un perro, tengo 5 años y soy de color rojo'
+    /* Mostramos la info usando el metodo */
+    perro.verinfo(); 'Soy un perro, tengo 5 años y soy de color rojo'
+
+
+    /* Manejamos herencia */
+    clase Perro extends Animal {
+        constructor(especie, edad, razaPerro) {
+            super(especie, edad);
+            this.razaPerro= razaPerro;
+        }
+        ladrar() {
+            document.write("wow!);
+        }
+        /* metodo get */
+        get getRaza() {
+            return this.razaPerro;
+        }   
+        /* metodo set */
+        set setRaza (newName) {
+            this.razaPerro = newName;
+        }
+    }
+    const miperro = new Perro("perro",5,"marron", "doberman");
+    miperro.verinfo(); 'Soy un perro, tengo 5 años y soy de color rojo'
+    miperro.ladrar(); 'wow!'
+    document.write(miperro.getRaza):
+    miperro.setRaza = "pedro"
+
+
 
 https://youtu.be/z95mZVUcJ-E
