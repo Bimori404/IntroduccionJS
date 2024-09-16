@@ -1,3 +1,5 @@
+--------- CAPITULO 1 ---------
+
 -> ¿Que es JavaScript?
 
     Lenguaje de programacion
@@ -116,7 +118,6 @@
         OR      ||  [ true || true = true ; true || false = true ; false || false = false ]
         NOT     !   [ !true = false ; !false = true ]
 
-
 -> Camel Case
 
     Frases o palabras compuestas [nombrePersona, parseInt(), .getElementById(), etc..]
@@ -126,6 +127,8 @@
     If ()
       Else If ()
     Else ()
+
+--------- CAPITULO 2 ---------
 
 -> Arrays
 
@@ -151,7 +154,7 @@
     Sentencia while y break
 
         let numero = 0
-        while (numero <  20) {
+        while (numero <br  20) {
             numero++
             document.write(numero +"<br>")
             if (numero == 10) {
@@ -159,7 +162,13 @@
             }
         }
 
-    Sentencia do while ??????????????????
+    Sentencia do while 
+    
+        let i = 0;
+        do {
+            console.log(i);
+            i++;
+        } while (i < 5);
 
     Sentencia for y continue
     
@@ -191,6 +200,60 @@
         }
 
     Sentencia label
+    [ utiliza para etiquetar una declaración, lo que permite identificar un bloque de código y referirse a él desde otras partes ]
+
+        [ break con label ]
+        outerLoop: // Etiqueta del bucle externo
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (i === 1 && j === 1) {
+                    break outerLoop; // Sale del bucle externo
+                }
+                console.log(`i = ${i}, j = ${j}`);
+            }
+        }
+
+        [ continue con label ]
+        outerLoop: // Etiqueta del bucle externo
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (i === 1 && j === 1) {
+                    continue outerLoop; // Salta a la siguiente iteración del bucle externo
+                }
+                console.log(`i = ${i}, j = ${j}`);
+            }
+        }
+
+-> ForEach
+    
+    es un método que se usa comúnmente en arrays y otras estructuras de datos iterables. Se 
+    ejecuta una vez para cada elemento de un array, sin modificar el array original
+
+    Sintaxis y usos
+        
+        const numbers = [1, 2, 3, 4, 5];
+        numbers.forEach(function(num) {
+            console.log(num * 2); // Multiplica cada número por 2
+        });
+
+    Ventaja respecto a 'for'
+
+        Sintaxis más simple. No necesitas gestionar manualmente los índices ni el ciclo
+
+        array.forEach(el => console.log(el));
+
+    Desventajas (break, continue)
+
+        A diferencia de un bucle for tradicional, no puedes usar break para salir 
+        prematuramente del ciclo, ni continue para saltar a la siguiente iteración
+
+        A diferencia de otros métodos como map, forEach no retorna un array modificado
+
+        const arr = [1, 2, 3, 4, 5];
+        arr.forEach(num => {
+            if (num === 3) break;  // Esto generará un error
+            console.log(num);
+        });
 
 -> Funciones
 
@@ -251,14 +314,7 @@
         }
         saludar("sam");
 
-
--> ForEach
-    
-    Sintaxis y usos
-    Ventaja respecto a 'for'
-    Desventajas (break, continue)
-
-------------- Paradigma de programacion -------------
+--------- CAPITULO 3 ---------
 
 -> P.O.O.
     
@@ -382,6 +438,148 @@
     document.write(miperro.getRaza):
     miperro.setRaza = "pedro"
 
+-------  CAPITULO 4  --------
 
+-> Metdos de cadena
 
-https://youtu.be/z95mZVUcJ-E
+    concat()
+        Junta dos o mas cadenas y retorna una nueva
+
+    Utilizadas para buscar y devolver un valor
+        startsWith()
+            Si una cadena comienza con los caracteres de otra cadena devuelve true, si no devuelve 
+            false
+
+        endsWith()
+            Si una cadena termina con los caracteres de otra cadena devuelve true, si no devuelve 
+            false
+
+        includes()
+            Si una cadena puede encontrarse dentro de otra cadena devuelve true, si no devuelve 
+            false
+
+        indexOf()
+            Duevuelve el indice del primer caracter de la cadena, si no existe devuelve -1
+        
+        lastIndexOf()
+            Duevuelve el ultimo indice del primer caracter de la cadena, si no existe devuelve -1
+
+    Utilizadas para modificar un valor
+        padStart()
+            [Propuesta] Rellena la cadena al principio con los caracteres deseados
+
+        padEnd()
+            [Propuesta] Rellena la cadena al final con los caracteres deseados
+        
+        repeat()
+            Devuelve la cadena las veces que se le indique
+
+    Otras maneras para modificar un valor
+        split()
+            Divide la cadena como se le indique
+
+        substring()
+            Nos retorna un pedazo de la cadena que seleccionemos
+
+        toLowerCase()
+            Convierte una cadena a minuscula
+        
+        toUpperCase()
+            Convierte una cadena a mayuscula
+
+        toString()
+            Función que convierte un objeto en un texto para que puedas verlo como una cadena
+        
+        trim()
+            Elimina los espacion en blanco al inicio y final de una cadena
+
+        trimEnd()
+            Elimina los espacion en blanco al final de una cadena
+        
+        trimStart()
+            Elimina los espacion en blanco al inicio de una cadena
+
+        valueOf()
+            simplemente devuelve el contenido del texto sin cambiar nada. Es útil cuando tienes 
+            un objeto y quieres convertirlo a su forma de texto básico. También se usa para 
+            convertir otros tipos de datos, como números, a texto
+    
+-> Arrays
+
+    Transformadores
+        pop()
+            Elimina el ultimo elemento de un array y lo devuelve
+
+        shift()
+            Elimina el primer elemento de un array y lo devuelve
+
+        push()
+            Agrega un elemento al final del array
+
+        reverse()
+            Invierte el orden de los elementos de un array
+
+        unshift()
+            Agrega mas elementos al inicio y devuelve la nueva longitud
+
+        sort()
+            Ordena los elementos y lo devuelve ordenado
+
+        splice()
+            Cambia el contenido eliminando elementos existentes y/o agregando nuevos elementos
+
+    Accesores
+        join()
+            Une todos los elementos de una matriz y los devuelve como cadena
+
+        slice()
+            Usado para copiar una parte de una lista, arreglo o cadena, sin cambiar el original. 
+            Es necesario indicar dónde empezar y dónde terminar, para que devuela lo deseado
+            [ Metodos ya vistos en cadenas: toString, indexOf, lastIndexOf, includes ]
+        
+    Repeticion
+        filter()
+            Crea un nuevo array con los elementos que cumplan la condicion
+
+            let numeros = ["uno","dos","tres"]
+            numeros.filter(
+                numero => document.write(
+                    numero + "</br>"
+                ))
+
+            Resultado:
+                uno
+                dos
+                tres
+
+        forEach()
+            Ejecuta la funcion indicada una vez por cada elemento del array 
+            [ veace en el cap 1 ]
+
+-> Objeto Math [ Basico ]
+
+    Metodos
+        sqrt()
+        cbrt()
+        max()
+        min()
+        random()
+        round()
+        fround()
+        flor()
+        trunc()
+
+    Propiedades
+        PI
+        SQRT1_2
+        SQRT2
+
+        E
+        LN2
+        LN10
+        LOG2E
+        LOG10E
+
+--------  CAPITULO 5 ---------
+
+--------  CAPITULO 6 ---------
