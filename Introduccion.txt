@@ -560,25 +560,57 @@
 
     Metodos
         sqrt()
+            Devuelve la raiz cuadrada positiva de un numero
+
         cbrt()
+            Devuelve la raiz cubica de un numero
+
         max()
+            Devuelve el numero mayor
+
         min()
+            Devuelve el numero menor
+
         random()
+            Devuelve un numero pseudo-aleatorio entre 0 y 1
+
         round()
+            Devuelve el valor redondeado mas cercano
+
         fround()
-        flor()
+            Devuelve el valor float mas cercano
+
+        floor()
+            Devuelve el valor redondeado un número hacia abajo, es decir, al número entero más 
+            cercano, menor o igual al valor dado
+        
         trunc()
+            Se utiliza para eliminar la parte decimal de un número y devolver solo la parte entera
 
     Propiedades
         PI
+            Circunferencia de un circulo respecto a su diametro, aprox 3.1416
+
         SQRT1_2
+            Representa la raíz cuadrada de 1/2, o aprox 0.707
+
         SQRT2
+            Raiz cuadrada de 2, aprox 1.414
 
         E
+            Constante de Euler, aprox 2.7182
+
         LN2
+            Logaritmo natural de 2, aprox 0.639
+
         LN10
+            Logaritmo natural de 10, aprox 2.303
+
         LOG2E
+            Logaritmo de Euler con base 2, aprox 1.443
+
         LOG10E
+            Logaritmo de Euler con base 10, aprox 0.434
 
 --------  CAPITULO 5 ---------
 
