@@ -841,29 +841,165 @@
 -> Atributos globales
 
     class
+        Define una o más clases CSS para el elemento. Las clases permiten aplicar 
+        estilos específicos o interactuar con los elementos a través de JavaScript
+
+        <div class="contenedor destacado">Contenido</div>
+        <style> 
+            .contenedor {
+                padding: 10px;
+            }
+            .destacado {
+                background-color: yellow;
+            }
+        </style>
+
     contenteditable
+        Indica si el contenido del elemento puede ser editado por el usuario. Si
+        se establece en true, el elemento se convierte en editable
+        
+        <p contenteditable="true">Puedes editar este texto</p>
+
     dir
+        Especifica la dirección del texto dentro del elemento. Los valores posibles
+        son ltr (de izquierda a derecha, el valor por defecto) y rtl (de derecha a
+        izquierda, utilizado para idiomas como árabe o hebreo)
+
+        <p dir="rtl">Este texto se mostrará de derecha a izquierda.</p>
+
     hidden
+        Indica que el elemento no es relevante o visible en la página. Aunque el
+        elemento existe en el DOM, no se muestra y no es accesible para el usuario
+
+        <p hidden>Este párrafo está oculto.</p>
+
     id
+        Define un identificador único para el elemento. El id es único dentro de
+        un documento HTML, y se utiliza para identificar y manipular elementos con 
+        JavaScript o CSS
+
+        <h1 id="tituloPrincipal">Bienvenidos</h1>
+
     style
+        Permite definir estilos en línea para el elemento mediante propiedades CSS. 
+        Aunque es posible aplicar estilos directamente a los elementos, generalmente
+        es preferible usar hojas de estilo CSS externas o internas para mantener el
+        código más limpio
+
+        <p style="color: red; font-size: 18px;">Este texto es rojo y más grande.</p>
+
     tabindex
+        Define el orden de tabulación del elemento cuando se navega por la página
+        utilizando el teclado (la tecla "Tab")
+
+            * 0: El elemento es navegable según el orden natural
+            * Valor positivo: Establece un orden de tabulación específico
+            * -1: El elemento no es navegable usando "Tab"
+        
+        <input type="text" tabindex="2">
+        <input type="text" tabindex="1">
+
     title
+        Proporciona información adicional sobre el elemento, que generalmente se
+        muestra como una sugerencia o "tooltip" cuando el usuario pasa el ratón por
+        encima del elemento
 
 -> Atributos de inputs
 
     className
+        Asigna una o más clases CSS al elemento input. Este atributo es sinónimo de 
+        class en HTML, pero en JavaScript se accede como className
+
+        <input type="text" class="campo-formulario">
+        <style>
+            .campo-formulario {
+                border: 1px solid black;
+                padding: 5px;
+            }
+        </style>
+
     value
+        Define el valor predefinido del campo de entrada. Si se usa en un formulario,
+        también almacena el valor actual que el usuario ha ingresado
+
+        <input type="text" value="Texto predeterminado">
+
     type
+        Especifica el tipo de entrada que aceptará el campo. Este es uno de los 
+        atributos más importantes, ya que define si el campo será de texto, contraseña,
+        correo electrónico, archivo, entre otros
+
+            * text: Entrada de texto
+            * password: Entrada para contraseñas (los caracteres se muestran ocultos)
+            * email: Valida que el texto ingresado sea un correo electrónico
+            * file: Permite seleccionar archivos
+            * number: Permite solo números
+
+        <input type="email" placeholder="Ingresa tu correo electrónico">
+
     accept
+        Utilizado principalmente con entradas de tipo file, este atributo especifica
+        qué tipos de archivos son aceptados por el campo. Puedes restringir formatos
+        específicos como imágenes, videos, o documentos
+
+        <input type="file" accept="image/png, image/jpeg">
+
     form
+        Asocia el campo de entrada a un formulario mediante su id, incluso si el campo
+        de entrada no está dentro del mismo form. Esto es útil cuando necesitas tener 
+        elementos separados pero vinculados al mismo formulario
+
+        <form id="formulario1">
+            <button type="submit">Enviar</button>
+        </form>
+        <input type="text" form="formulario1" placeholder="Texto fuera del formulario">
+
     minlength
+        Especifica la cantidad mínima de caracteres que el usuario debe ingresar en el
+        campo de texto. Si el valor ingresado es menor, el formulario no se enviará
+        
+        <input type="text" minlength="5" placeholder="Mínimo 5 caracteres">
+
     placeholder
+        Define un texto de sugerencia que aparece en el campo de entrada antes de que el
+         usuario comience a escribir. Es útil para proporcionar instrucciones sobre qué 
+         tipo de datos debe ingresar el usuario
+
     required
+        Indica que el campo es obligatorio. Si no se llena, el formulario no se enviará 
+        y el navegador mostrará un mensaje de advertencia
 
 -> Propiedad Style
 
-    Usos y ejemplos
+    Usos
+        Aplicar estilos dinámicos con JavaScript: En JavaScript, se puede modificar 
+        cualquier propiedad CSS utilizando la propiedad style. Esto es útil cuando 
+        necesitas cambiar el diseño o la apariencia de un elemento en respuesta a 
+        eventos como clics, desplazamiento, o interacción del usuario
+
+        Estilos en línea: Puedes aplicar estilos directamente dentro de la etiqueta HTML
+        usando el atributo style, aunque no es recomendable en muchos casos debido a la 
+        separación de responsabilidades entre el HTML y el CSS
+
+    Ejemplos
+        Estilos en línea en HTML
+            <div style="background-color: yellow; color: red;">Texto con estilo en línea</div>
+
+        Aplicar estilos con JavaScript
+            <button onclick="cambiarColor()">Cambiar Color</button>
+            <p id="parrafo">Este es un párrafo.</p>
+            <script>
+            function cambiarColor() {
+                document.getElementById('parrafo').style.color = 'blue';
+                document.getElementById('parrafo').style.fontSize = '20px';
+            }
+            </script>
+
     Propiedades Camel Case
+        Cuando utilizas style con JavaScript, las propiedades CSS que contienen guiones (-)
+        deben ser convertidas a Camel Case. En lugar de usar guiones, como es común en CSS,
+        debes escribir las propiedades utilizando minúsculas en la primera palabra y 
+        mayúsculas en las subsecuentes
 
 -> Clases, classList y sus métodos
 
