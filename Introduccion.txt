@@ -614,4 +614,308 @@
 
 --------  CAPITULO 5 ---------
 
+->  Console (Consola de javascript)
+
+        Es una herramienta muy útil que permite interactuar con el código JS de una
+        página web directamente desde el navegador
+
+        Mensaje en la consola:
+            console.log("Hola, Mundo");
+
+-> Métodos de registro en console
+
+    assert()
+        Lanza un mensaje de error en la consola si la expresión es false. Si la
+        condición es true, no ocurre nada
+
+    clear()
+        Limpia todos los mensajes de la consola
+
+    error()
+        Muestra un mensaje de error en la consola
+
+    info()
+        Muestra un mensaje de información en la consola
+
+    log()
+        Es el método más usado para imprimir mensajes en la consola
+
+    table()
+        Muestra datos en forma de tabla. Es útil para representar arreglos o objetos
+
+        const personas = [
+                { nombre: "Samuel", edad: 25 },
+                { nombre: "Nallely", edad: 23 }
+            ];
+        console.table(personas); // Mostrará los datos en una tabla en la consola
+
+    warn()
+        Muestra un mensaje de advertencia en la consola
+
+    dir()
+        Muestra una lista interactiva de las propiedades de un objeto, útil para 
+        inspeccionar objetos de manera más detallada
+
+        const persona = { nombre: "Samuel", edad: 25 };
+        console.dir(persona); // Mostrará las propiedades del objeto
+
+-> Métodos de conteo en console
+
+    count()
+        Lleva un conteo de cuántas veces se ha ejecutado un bloque de código o se ha
+        llamado este método con una etiqueta específica
+
+    countReset()
+        Resetea el conteo de un contador con una etiqueta específica
+
+-> Métodos de agrupación en console
+
+    group()
+        Crea un grupo para organizar mensajes. Todo lo que esté entre group() y groupEnd() 
+        aparecerá anidado en la consola
+
+    groupEnd()
+        Finaliza un grupo creado por console.group()
+
+    groupCollapsed()
+        Crea un grupo colapsado por defecto. Puedes expandirlo manualmente en la consola
+
+-> Métodos de temporización en console
+
+    time()
+        Inicia un temporizador para medir cuánto tarda en ejecutarse un bloque de código
+
+    timeEnd()
+        Finaliza un temporizador iniciado con console.time() y muestra el tiempo 
+        transcurrido
+
+    timeLog()
+        Registra el tiempo actual de un temporizador sin detenerlo, permitiendo ver el
+        progreso a lo largo del tiempo
+
 --------  CAPITULO 6 ---------
+
+-> El DOM (Document Object Model)
+
+    Definicion
+        interfaz de programación que representa la estructura de un documento HTML o XML 
+        como un árbol jerárquico de nodos. Cada uno de estos nodos corresponde a partes del 
+        documento como etiquetas, atributos o texto. Esto permite a los desarrolladores 
+        interactuar y manipular la estructura, estilo y contenido de una página web de forma 
+        dinámica mediante lenguajes de programación como JavaScript
+
+    Concepto
+        Convierte los documentos en una estructura navegable, donde los programadores pueden
+        acceder a los diferentes elementos, modificarlos, agregar nuevos, o eliminarlo
+
+        El DOM para este HTML sería representado como un árbol de nodos de la siguiente manera
+            Document
+            ├── html
+            │   ├── head
+            │   │   └── title (Texto: "Mi página")
+            │   ├── body
+            │   │   ├── h1 (Texto: "Título")
+            │   │   └── p (Texto: "Este es un párrafo")
+
+    Nodo
+        El DOM está compuesto por varios tipos de nodos, que son las unidades básicas que 
+        conforman su estructura
+
+        Document
+            El nodo document es la raíz del DOM. Representa el documento entero y es el 
+            punto de entrada para acceder a todos los elementos en la página
+
+        Element
+            Los nodos de elemento representan las etiquetas HTML. Cada etiqueta en el 
+            HTML se convierte en un nodo de elemento en el DOM
+
+            <div id="contenedor"></div>
+            const elemento = document.getElementById("contenedor");
+            console.log(elemento); // Imprime el elemento <div> con id "contenedor"
+
+        Text
+            Los nodos de texto contienen el contenido textual de un elemento HTML. Estos 
+            nodos son hijos de nodos de elemento
+
+        Attribute
+            Representan los atributos de los elementos HTML. A diferencia de los nodos 
+            de texto y elemento, los atributos no son hijos directos del nodo de elemento,
+            pero se pueden acceder mediante las propiedades del elemento
+
+            <a href="https://www.example.com" title="Ir a ejemplo">Enlace</a>
+            const enlace = document.querySelector("a");
+            console.log(enlace.getAttribute("href")); // Imprime "https://www.example.com"
+
+        Comentarios
+            Además de los elementos, texto y atributos, el DOM también incluye nodos de 
+            comentarios (<!-- comentario -->)
+
+-> Métodos de selección de elementos (Document)
+
+    getElementById()
+        Selecciona el elemento con el id especificado. Este método solo devuelve un elemento, 
+        ya que los identificadores (id) deben ser únicos dentro de un documento
+
+        const elemento = document.getElementById(id);
+
+    getElementByTagName()
+        Selecciona todos los elementos con el nombre de etiqueta especificado (por ejemplo, 
+        div, p, h1, etc.). Devuelve una colección HTML (similar a un array), por lo que 
+        puedes acceder a elementos individuales mediante su índice
+
+        const elementos = document.getElementsByTagName(nombreEtiqueta);
+
+    querySellector()
+        Selecciona el primer elemento que coincide con el selector CSS proporcionado. Este
+        método es muy flexible, ya que permite usar cualquier selector de CSS 
+        (#id, .clase, tag, etc.)
+
+        const elemento = document.querySelector(selectorCSS);
+
+    querySellectorAll()
+        Selecciona todos los elementos que coinciden con el selector CSS proporcionado y
+        devuelve una NodeList (similar a un array). A diferencia de getElementsByTagName(),
+        esta colección puede ser iterada usando métodos como forEach()
+
+    Ejemplo usando todos los métodos
+
+        <div id="miDiv">Elemento con ID</div>
+        <p class="texto">Texto 1</p>
+        <p class="texto">Texto 2</p>
+        <p class="texto">Texto 3</p>
+        <script>
+            // getElementById
+            const div = document.getElementById("miDiv");
+            console.log(div); // Devuelve el <div id="miDiv">
+
+            // getElementsByTagName
+            const parrafos = document.getElementsByTagName("p");
+            console.log(parrafos); // Devuelve una colección de <p> (HTMLCollection)
+
+            // querySelector
+            const primerParrafo = document.querySelector(".texto");
+            console.log(primerParrafo); // Devuelve el primer <p class="texto">
+
+            // querySelectorAll
+            const todosParrafos = document.querySelectorAll(".texto");
+            todosParrafos.forEach(parrafo => console.log(parrafo)); // Devuelve todos los <p class="texto">
+        </script>
+
+-> Métodos de atributos de un elemento
+
+    setAttribut()
+        Establece o agrega un nuevo atributo al elemento especificado. Si el atributo
+        ya existe, se actualiza su valor
+
+        element.setAttribute(nombreAtributo, valorAtributo);
+
+    getAttribut()
+        Obtiene el valor de un atributo especificado en el elemento. Si el atributo
+        no existe, devuelve null
+
+        const valor = element.getAttribute(nombreAtributo);
+
+    removeAttribut()
+        Elimina un atributo especificado del elemento. Si el atributo no existe, 
+        no hace nada
+
+    Ejemplo usando todos los métodos
+
+        <button id="miBoton" class="btn">Haz clic aquí</button>
+
+        <script>
+        const boton = document.getElementById("miBoton");
+
+        // Establecer o cambiar un atributo con setAttribute()
+        boton.setAttribute("title", "Este es un botón");  // Añade un título al botón
+        boton.setAttribute("class", "btn btn-primary");   // Cambia la clase del botón
+
+        // Obtener un atributo con getAttribute()
+        const titulo = boton.getAttribute("title");
+        console.log(titulo); // Devuelve "Este es un botón"
+
+        // Eliminar un atributo con removeAttribute()
+        boton.removeAttribute("class");  // Elimina la clase del botón
+        </script>
+
+-> Atributos globales
+
+    class
+    contenteditable
+    dir
+    hidden
+    id
+    style
+    tabindex
+    title
+
+-> Atributos de inputs
+
+    className
+    value
+    type
+    accept
+    form
+    minlength
+    placeholder
+    required
+
+-> Propiedad Style
+
+    Usos y ejemplos
+    Propiedades Camel Case
+
+-> Clases, classList y sus métodos
+
+    Definicion y usos
+    add()
+    remove()
+    item()
+    contains()
+    replace()
+    toggle()
+
+-> Obtención y modificación de elementos
+
+    textContent
+    innerText
+    outerText
+    innerHTML
+    outerHTML
+
+-> Creación de elementos
+
+    createElements()
+    createDocumentFragment()
+
+-> Obtención y modificacion de childs
+
+    firstChild
+    lastChild
+    firstElementChild
+    lastElementChild
+    childNodes
+    children
+
+-> Métodos de childs (hijos)
+
+    appendChild()
+    replaceChild()
+    removeChild()
+    hasChildNodes()
+
+-> Propiedades de parents (Padres)
+
+    parentElement
+    parentNodes
+
+-> Propiedades de siblings (Hermanos)
+
+    nextSiblings
+    previusSiblings
+    nextElementSiblings
+    previusElementSiblings
+
+-> Nodos, una propiedad extra
+
+    closest()
