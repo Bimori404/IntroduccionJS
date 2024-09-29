@@ -1,4 +1,4 @@
-# IntroduccionJS
+# Introduccion en JavaScript
 
 Cronología detallada para aprender JavaScript utilizando Node.js como entorno de ejecución.
 
@@ -33,7 +33,7 @@ Cronología detallada para aprender JavaScript utilizando Node.js como entorno d
 **Métodos de Arrays**
     - forEach, map, filter, reduce
 
-**Manipulación del DOM (Opcional)**
+**Manipulación del DOM**
     - Selección de elementos
     - Modificación de contenido y estilos
 

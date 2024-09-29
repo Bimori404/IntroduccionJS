@@ -1,3 +1,5 @@
+Introduccion, Fundamentos & Profundización
+
 --------- CAPITULO 1 ---------
 
 -> ¿Que es JavaScript?
@@ -1003,55 +1005,328 @@
 
 -> Clases, classList y sus métodos
 
-    Definicion y usos
+    Definicion
+        ClassList es una interfaz utilizada para trabajar con las clases CSS de un elemento
+        HTML de forma eficiente. Te permite agregar, quitar, alternar, y verificar clases
+        sin necesidad de modificar directamente el atributo class
+
     add()
+        Agrega una o más clases al elemento
+        document.getElementById("miElemento").classList.add("nuevaClase");
+
     remove()
+        Elimina una o más clases del elemento
+        document.getElementById("miElemento").classList.remove("nuevaClase");
+
     item()
+        Devuelve la clase en la posición especificada
+        console.log(document.getElementById("miElemento").classList.item(0));
+
     contains()
+        Verifica si el elemento tiene la clase especificada
+        if (document.getElementById("miElemento").classList.contains("nuevaClase")) {
+            console.log("El elemento tiene la clase");
+        }
+
     replace()
+        Reemplaza una clase por otra
+        document.getElementById("miElemento").classList.replace("claseVieja", "claseNueva");
+
     toggle()
+        Alterna la presencia de una clase. Si la clase existe, la elimina; si no, la agrega
+        document.getElementById("miElemento").classList.toggle("nuevaClase");
 
 -> Obtención y modificación de elementos
 
     textContent
+        Modifica o obtiene el texto del elemento, incluyendo texto oculto por CSS
+
     innerText
+        Modifica o obtiene el texto visible de un elemento (considera estilos CSS como display: none)
+
     outerText
+        Modifica el texto visible y reemplaza el elemento completo
+
     innerHTML
+        Inserta o modifica el HTML dentro del elemento
+
     outerHTML
+        Inserta o modifica el HTML y reemplaza todo el elemento
 
 -> Creación de elementos
 
     createElements()
+        Crea un nuevo elemento HTML
+        let nuevoDiv = document.createElement("div");
+
     createDocumentFragment()
+        Crea un fragmento de documento que puede contener varios nodos. Útil para evitar 
+        múltiples renderizados
+        let fragmento = document.createDocumentFragment();
 
 -> Obtención y modificacion de childs
 
     firstChild
+        Devuelve el primer nodo hijo (puede ser un texto o un elemento)
+
     lastChild
+        Devuelve el último nodo hijo
+
     firstElementChild
+        Devuelve el primer hijo que es un elemento
+
     lastElementChild
+        Devuelve el último hijo que es un elemento
+
     childNodes
+        Devuelve una lista de todos los nodos hijos
+
     children
+        Devuelve una lista de los hijos que son elementos
+
+    Ejemplo usando los métodos
+        <div id="container">
+            <h1>Elemento principal</h1>
+            <p id="primerParrafo">Este es el primer párrafo.</p>
+            <p id="segundoParrafo">Este es el segundo párrafo.</p>
+        </div>
+        <script>           
+            const container = document.getElementById("container");
+
+            // Obtener el primer y último hijo
+            const primerHijo = container.firstChild;
+            const ultimoHijo = container.lastChild;
+            console.log("Primer hijo (firstChild):", primerHijo);
+            console.log("Último hijo (lastChild):", ultimoHijo);
+
+            // Obtener el primer y último hijo que son elementos
+            const primerElemento = container.firstElementChild;
+            const ultimoElemento = container.lastElementChild;
+            console.log("Primer hijo elemento (firstElementChild):", primerElemento);
+            console.log("Último hijo elemento (lastElementChild):", ultimoElemento);
+
+            // Obtener todos los nodos hijos
+            const todosLosNodos = container.childNodes;
+            console.log("Todos los nodos hijos (childNodes):", todosLosNodos);
+
+            // Obtener solo los hijos que son elementos
+            const soloElementos = container.children;
+            console.log("Hijos que son elementos (children):", soloElementos);
+        </script>
 
 -> Métodos de childs (hijos)
 
     appendChild()
+        Añade un nodo hijo al final
+
     replaceChild()
+        Reemplaza un nodo hijo con otro
+
     removeChild()
+        Elimina un nodo hijo
+
     hasChildNodes()
+        Verifica si el nodo tiene hijos
+
+    Ejemplo usando los métodos
+        <div id="container">
+            <h1>Elemento principal</h1>
+            <p id="primerParrafo">Este es el primer párrafo.</p>
+            <p id="segundoParrafo">Este es el segundo párrafo.</p>
+        </div>
+        <script>
+            // Crear un nuevo elemento
+            const nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = "Este es un nuevo párrafo agregado con appendChild.";
+
+            // Agregar el nuevo párrafo al final del contenedor
+            container.appendChild(nuevoParrafo);
+
+            // Reemplazar el segundo párrafo por otro
+            const reemplazo = document.createElement("p");
+            reemplazo.textContent = "Este párrafo ha reemplazado al segundo párrafo.";
+            container.replaceChild(reemplazo, document.getElementById("segundoParrafo"));
+
+            // Eliminar el primer párrafo
+            const primerParrafo = document.getElementById("primerParrafo");
+            container.removeChild(primerParrafo);
+
+            // Verificar si el contenedor tiene nodos hijos
+            const tieneHijos = container.hasChildNodes();
+            console.log("¿El contenedor tiene nodos hijos?:", tieneHijos);
+        </script>
 
 -> Propiedades de parents (Padres)
 
     parentElement
-    parentNodes
+        Devuelve el elemento padre de un nodo
+
+    parentNode
+        Devuelve el nodo padre
+
+    Ejemplo usando los métodos
+        <div id="container">
+            <h1>Elemento principal</h1>
+            <p id="primerParrafo">Este es el primer párrafo.</p>
+            <p id="segundoParrafo">Este es el segundo párrafo.</p>
+        </div>
+        <script>
+            // Obtener el elemento padre
+            const padre = nuevoParrafo.parentElement;
+            console.log("Elemento padre:", padre);
+
+            // Obtener el nodo padre
+            const nodoPadre = nuevoParrafo.parentNode;
+            console.log("Nodo padre:", nodoPadre);
+        </script>
 
 -> Propiedades de siblings (Hermanos)
 
     nextSiblings
+        Devuelve el siguiente nodo hermano (puede ser un texto o un elemento)
+
     previusSiblings
+        Devuelve el nodo hermano anterior
+
     nextElementSiblings
+        Devuelve el siguiente hermano que es un elemento
+
     previusElementSiblings
+        Devuelve el hermano anterior que es un elemento
+
+    Ejemplo usando los métodos
+        <div id="container">
+            <h1>Elemento principal</h1>
+            <p id="primerParrafo">Este es el primer párrafo.</p>
+            <p id="segundoParrafo">Este es el segundo párrafo.</p>
+        </div>
+        <script>
+            // Siguiente hermano
+            const siguienteHermano = nuevoParrafo.nextSibling;
+            console.log("Siguiente nodo hermano:", siguienteHermano);
+
+            // Hermano anterior
+            const anteriorHermano = nuevoParrafo.previousSibling;
+            console.log("Nodo hermano anterior:", anteriorHermano);
+
+            // Siguiente hermano que es un elemento
+            const siguienteElemento = nuevoParrafo.nextElementSibling;
+            console.log("Siguiente hermano elemento:", siguienteElemento);
+
+            // Hermano anterior que es un elemento
+            const anteriorElemento = nuevoParrafo.previousElementSibling;
+            console.log("Hermano elemento anterior:", anteriorElemento);
+        </script>
 
 -> Nodos, una propiedad extra
 
     closest()
+        Devuelve el ancestro más cercano que coincide con el selector dado,
+        o null si no encuentra uno
+        
+        let elemento = document.getElementById("miElemento");
+        let closestDiv = elemento.closest("div");
+        console.log(closestDiv);
+
+    Ejemplo usando los métodos
+        <div id="container">
+            <h1>Elemento principal</h1>
+            <p id="primerParrafo">Este es el primer párrafo.</p>
+            <p id="segundoParrafo">Este es el segundo párrafo.</p>
+        </div>
+        <script>
+
+            // Busca el ancestro más cercano con el selector "div"
+            const divMasCercano = nuevoParrafo.closest("div");
+            console.log("Ancestro más cercano con el selector 'div':", divMasCercano);
+        </script>
+
+-> Codigo (Obtencion y modificacion .... Nodos, propiedad extra)
+
+    "
+    <div id="container">
+        <h1>Elemento principal</h1>
+        <p id="primerParrafo">Este es el primer párrafo.</p>
+        <p id="segundoParrafo">Este es el segundo párrafo.</p>
+    </div>
+    <script>
+        // Obtención de hijos y modificación
+
+        const container = document.getElementById("container");
+
+        // Obtener el primer y último hijo
+        const primerHijo = container.firstChild;
+        const ultimoHijo = container.lastChild;
+        console.log("Primer hijo (firstChild):", primerHijo);
+        console.log("Último hijo (lastChild):", ultimoHijo);
+
+        // Obtener el primer y último hijo que son elementos
+        const primerElemento = container.firstElementChild;
+        const ultimoElemento = container.lastElementChild;
+        console.log("Primer hijo elemento (firstElementChild):", primerElemento);
+        console.log("Último hijo elemento (lastElementChild):", ultimoElemento);
+
+        // Obtener todos los nodos hijos
+        const todosLosNodos = container.childNodes;
+        console.log("Todos los nodos hijos (childNodes):", todosLosNodos);
+
+        // Obtener solo los hijos que son elementos
+        const soloElementos = container.children;
+        console.log("Hijos que son elementos (children):", soloElementos);
+
+        // Métodos de manipulación de hijos
+
+        // Crear un nuevo elemento
+        const nuevoParrafo = document.createElement("p");
+        nuevoParrafo.textContent = "Este es un nuevo párrafo agregado con appendChild.";
+
+        // Agregar el nuevo párrafo al final del contenedor
+        container.appendChild(nuevoParrafo);
+
+        // Reemplazar el segundo párrafo por otro
+        const reemplazo = document.createElement("p");
+        reemplazo.textContent = "Este párrafo ha reemplazado al segundo párrafo.";
+        container.replaceChild(reemplazo, document.getElementById("segundoParrafo"));
+
+        // Eliminar el primer párrafo
+        const primerParrafo = document.getElementById("primerParrafo");
+        container.removeChild(primerParrafo);
+
+        // Verificar si el contenedor tiene nodos hijos
+        const tieneHijos = container.hasChildNodes();
+        console.log("¿El contenedor tiene nodos hijos?:", tieneHijos);
+
+        // Manipulación de padres y hermanos
+
+        // Obtener el elemento padre
+        const padre = nuevoParrafo.parentElement;
+        console.log("Elemento padre:", padre);
+
+        // Obtener el nodo padre
+        const nodoPadre = nuevoParrafo.parentNode;
+        console.log("Nodo padre:", nodoPadre);
+
+        // Obtener los hermanos de un nodo
+
+        // Siguiente hermano (puede ser un nodo de texto)
+        const siguienteHermano = nuevoParrafo.nextSibling;
+        console.log("Siguiente nodo hermano:", siguienteHermano);
+
+        // Hermano anterior (puede ser un nodo de texto)
+        const anteriorHermano = nuevoParrafo.previousSibling;
+        console.log("Nodo hermano anterior:", anteriorHermano);
+
+        // Siguiente hermano que es un elemento
+        const siguienteElemento = nuevoParrafo.nextElementSibling;
+        console.log("Siguiente hermano elemento:", siguienteElemento);
+
+        // Hermano anterior que es un elemento
+        const anteriorElemento = nuevoParrafo.previousElementSibling;
+        console.log("Hermano elemento anterior:", anteriorElemento);
+
+        // Método closest()
+        // Busca el ancestro más cercano con el selector "div"
+        const divMasCercano = nuevoParrafo.closest("div");
+        console.log("Ancestro más cercano con el selector 'div':", divMasCercano);
+    </script>
+    "
