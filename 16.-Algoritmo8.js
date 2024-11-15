@@ -8,7 +8,8 @@ var n = 1298;
 function algoritmo8(n) {
     while (n >= 10) {
         console.log(n);
-        n = n.toString().split("").reduce((sum, digit) => sum + parseInt(digit), 0);
+        n = n.toString().split("").reduce((sum, digit) =>
+            sum + parseInt(digit), 0);
     }
     return n;
 }
