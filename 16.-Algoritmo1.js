@@ -4,7 +4,6 @@ hasta que el resultado sea un solo dígito.
 */
 
 var n = 1298;
-
 function algoritmo8(n) {
     while (n >= 10) {
         console.log(n);
@@ -13,5 +12,4 @@ function algoritmo8(n) {
     }
     return n;
 }
-
 console.log(algoritmo8(n));
